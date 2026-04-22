@@ -1,0 +1,63 @@
+[package]
+name = "cascade-agent"
+version = "0.1.0"
+edition = "2021"
+description = "Async LLM agentic engine with tool execution, memory management, and dynamic skills"
+license = "MIT"
+
+[dependencies]
+# Async runtime
+tokio = { version = "1", features = ["full", "sync"] }
+futures = "0.3"
+async-trait = "0.1"
+
+# LLM inference (cascading failover)
+llm-cascade = "0.1"
+
+# Token counting
+tokenizers = { version = "0.21", features = ["http"] }
+
+# SQLite (for llm-cascade compaction DB access)
+rusqlite = "0.31"
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+
+# Error handling
+anyhow = "1"
+thiserror = "2"
+
+# Vector DB & Embeddings
+lancedb = "0.27"
+arrow-array = "57"
+arrow-schema = "57"
+fastembed = "5"
+
+# HTTP (search APIs)
+reqwest = { version = "0.12", features = ["json"] }
+
+# Orchestrator communication
+tokio-tungstenite = { version = "0.26", features = ["connect"] }
+futures-util = "0.3"
+
+# Markdown / Frontmatter parsing
+gray_matter = { version = "0.3", features = ["yaml"] }
+serde_yaml = "0.9"
+
+# CLI
+clap = { version = "4", features = ["derive"] }
+
+# Logging / Tracing
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Utilities
+uuid = { version = "1", features = ["v4"] }
+chrono = { version = "0.4", features = ["serde"] }
+dirs = "6"
+
+[dev-dependencies]
+tempfile = "3"
+tokio-test = "0.4"

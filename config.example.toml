@@ -1,0 +1,33 @@
+[agent]
+cascade_name = "primary"
+cascade_config_path = "~/.config/llm-cascade/config.toml"
+max_tool_rounds = 25
+soul_md_path = "./SOUL.md"
+
+[memory]
+context_token_limit = 120000
+compaction_target_ratio = 0.6
+summarization_cascade = "summarizer"
+tokenizer_model = "Xenova/gpt-4o"
+
+[knowledge]
+db_path = "./data/lancedb"
+embedding_model = "multilingual-e5-base"
+default_collection = "general"
+similarity_threshold = 0.65
+max_results = 5
+
+[orchestrator]
+enabled = false
+transport = "websocket"
+bind_address = "127.0.0.1:9876"
+
+[search]
+tavily_api_key_env = "TAVILY_API_KEY"
+brave_api_key_env = "BRAVE_API_KEY"
+max_results = 5
+
+[paths]
+skills_dir = "./data/skills"
+plans_dir = "./data/plans"
+outputs_dir = "./data/outputs"
